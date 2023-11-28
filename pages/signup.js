@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import liff from "@line/liff";
-import { Button, Form, Input, Space, Select, DatePicker, DatePickerProps } from 'antd';
+import { Button, Form, Input, Space, Select, DatePicker, Checkbox } from 'antd';
 const { Option } = Select;
 
 const SubmitButton = ({ form }) => {
@@ -53,6 +53,19 @@ const Signup = (props) => {
 
   const onGenderChange = (value) => {
 
+  };
+
+  const tailFormItemLayout = {
+    wrapperCol: {
+      xs: {
+        span: 24,
+        offset: 0,
+      },
+      sm: {
+        span: 16,
+        offset: 8,
+      },
+    },
   };
 
   return (<div>
@@ -141,6 +154,30 @@ const Signup = (props) => {
         ]}
       >
         <DatePicker onChange={onChange} picker="month" />
+      </Form.Item>
+      <Form.Item
+        name="is_agree_privacy_consent"
+        valuePropName="checked"
+        rules={[
+          {
+            validator: (_, value) =>
+              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+          },
+        ]}
+        {...tailFormItemLayout}
+      >
+        <Checkbox>
+          <label for="is_agree_privacy_consent"><span></span>By proceeding to sign up, I accept the <a href="https://www.dolce-gusto.co.th/en/our-service#term-conditions" target="_blank"><strong>Terms and Conditions</strong></a> and acknowledge the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Privacy Notice</strong></a>.</label>
+        </Checkbox>
+      </Form.Item>
+      <Form.Item
+        name="is_subscribed"
+        valuePropName="checked"
+        {...tailFormItemLayout}
+      >
+        <Checkbox>
+          <label for="is_subscribed"><span></span>I would like to receive offers, news, competitions and information about <strong>Nestle (Thai) Ltd</strong>, its brands and its products. I understand that my personal data will be processed in accordance with the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Nestle Privacy Notice</strong></a>. I understand that I can withdraw my consent at any time.</label>
+        </Checkbox>
       </Form.Item>
       <Form.Item>
         <Space>
