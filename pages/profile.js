@@ -8,6 +8,7 @@ const Login = (props) => {
   }, [])
 
   const initPage = async () => {
+    console.log('initPage', process.env.LIFF_ID)
     await liff.init({ liffId: process.env.LIFF_ID })
     const profile = await liff.getProfile()
     setProfile(profile)
