@@ -1,0 +1,73 @@
+body {
+  font-family: "GothamRnd", "DBHelvethaicaMonX", Tahoma, Verdana, Arial;
+  font-size: 14px;
+  line-height: 1.6;
+  background: #FFFFFF;
+  color: #42240f;
+}
+
+h2,
+.h2 {
+  margin: 0;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+}
+
+.button {
+  background: #42240f;
+  color: #FFFFFF;
+  border: none;
+  font-weight: bold;
+}
+
+.form-register {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-register .legend {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.form-register label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #42240f;
+  display: block;
+}
+
+.form-register .button {
+  display: inline-block;
+  vertical-align: middle;
+  border: solid 2px #42240f;
+  height: 40px;
+  padding: 7px 15px;
+  min-width: 235px;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 10px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  margin-top: 0;
+}
+
+.form-register .checkbox {
+  font-style: italic;
+  color: #42240f;
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  position: relative;
+  float: none;
+  cursor: pointer;
+}

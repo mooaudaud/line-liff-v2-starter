@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/custom.css";
 import { useState, useEffect } from "react";
 import liff from "@line/liff";
 import { useRouter } from 'next/router'

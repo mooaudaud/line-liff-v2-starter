@@ -7,7 +7,7 @@ const SubmitButton = ({ form }) => {
   const [submittable, setSubmittable] = React.useState(false);
 
   const values = Form.useWatch([], form);
-  React.useEffect(() => {
+  useEffect(() => {
     form
       .validateFields({
         validateOnly: true,
@@ -22,8 +22,8 @@ const SubmitButton = ({ form }) => {
       );
   }, [values]);
   return (
-    <Button type="primary" htmlType="submit" disabled={!submittable}>
-      Submit
+    <Button type="primary" htmlType="submit" disabled={!submittable} style={{ width: '100%' }} className='button'>
+      Sign Up
     </Button>
   );
 };
@@ -69,8 +69,8 @@ const Signup = (props) => {
   };
 
   return (<div>
-    <Form form={form} name="validateOnly" layout="vertical" autoComplete="off">
-      <h2>
+    <Form form={form} name="validateOnly" layout="vertical" autoComplete="off" className='form-register'>
+      <h2 className="legend">
         Contact Details
       </h2>
       <Form.Item
@@ -98,9 +98,28 @@ const Signup = (props) => {
       <Form.Item
         name="verify_code"
       >
-        <Button>Verified</Button>
+        <Button
+          className='button'
+          style={{ width: '100%' }}
+          onPress
+        >
+          Verified
+        </Button>
       </Form.Item>
-      <h2>
+      <Form.Item
+        label="isVerify"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+        style={{ display: 'none' }}
+      >
+        <Checkbox>
+          Verified
+        </Checkbox>
+      </Form.Item>
+      <h2 class="legend">
         Profile Details
       </h2>
       <Form.Item
@@ -153,7 +172,7 @@ const Signup = (props) => {
           },
         ]}
       >
-        <DatePicker onChange={onChange} picker="month" />
+        <DatePicker onChange={onChange} picker="month" style={{ width: '100%' }} />
       </Form.Item>
       <Form.Item
         name="is_agree_privacy_consent"
@@ -166,8 +185,8 @@ const Signup = (props) => {
         ]}
         {...tailFormItemLayout}
       >
-        <Checkbox>
-          <label for="is_agree_privacy_consent"><span></span>By proceeding to sign up, I accept the <a href="https://www.dolce-gusto.co.th/en/our-service#term-conditions" target="_blank"><strong>Terms and Conditions</strong></a> and acknowledge the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Privacy Notice</strong></a>.</label>
+        <Checkbox className='checkbox' >
+          By proceeding to sign up, I accept the <a href="https://www.dolce-gusto.co.th/en/our-service#term-conditions" target="_blank"><strong>Terms and Conditions</strong></a> and acknowledge the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Privacy Notice</strong></a>.
         </Checkbox>
       </Form.Item>
       <Form.Item
@@ -175,15 +194,13 @@ const Signup = (props) => {
         valuePropName="checked"
         {...tailFormItemLayout}
       >
-        <Checkbox>
-          <label for="is_subscribed"><span></span>I would like to receive offers, news, competitions and information about <strong>Nestle (Thai) Ltd</strong>, its brands and its products. I understand that my personal data will be processed in accordance with the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Nestle Privacy Notice</strong></a>. I understand that I can withdraw my consent at any time.</label>
+        <Checkbox className='checkbox' >
+          I would like to receive offers, news, competitions and information about <strong>Nestle (Thai) Ltd</strong>, its brands and its products. I understand that my personal data will be processed in accordance with the <a href="https://www.dolce-gusto.co.th/en/privacy-policy" target="_blank"><strong>Nestle Privacy Notice</strong></a>. I understand that I can withdraw my consent at any time.
         </Checkbox>
       </Form.Item>
       <Form.Item>
-        <Space>
-          <SubmitButton form={form} />
-          <Button htmlType="reset">Reset</Button>
-        </Space>
+        <SubmitButton form={form} />
+        {/* <Button htmlType="reset">Reset</Button> */}
       </Form.Item>
     </Form>
   </div>)
