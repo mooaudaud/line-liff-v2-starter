@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import packageJson from "../package.json";
+import liff from "@line/liff";
 
 export default function Home(props) {
-  useEffect(()=> {
-    window.location.href = "https://id-connect.vinobe.com/authorize?client_id=wgy1g2SORtccZZC5LohR8TapmXnxT9Zl&redirect_uri=https://liff.line.me/2001828409-k6xq18xG/callback&return_type=token&scope=profile.*"
+  useEffect(async ()=> {
+    await liff.init({ liffId: process.env.LIFF_ID })
+    liff.openWindow({
+  url: "https://id-connect.vinobe.com/authorize?client_id=wgy1g2SORtccZZC5LohR8TapmXnxT9Zl&redirect_uri=https://liff.line.me/2001828409-k6xq18xG/callback&return_type=token&scope=profile.*",
+  external: false,
+});
   }, [])
   return (
     <div>
