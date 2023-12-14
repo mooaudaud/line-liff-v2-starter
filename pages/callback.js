@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import liff from "@line/liff";
 
 const Callback = (props) => {
-  const [params, setParams] = useState({})
+  const [params, setParams] = useState('')
   const [profile, setProfile] = useState({})
   useEffect(() => {
     initPage()
@@ -13,11 +13,11 @@ const Callback = (props) => {
     liff.login()
     const profile = await liff.getProfile()
     setProfile(profile)
+    setParams(window.location.search)
   }
 
-  const params = new URLSearchParams(window.location.search);
   return <div>
-    <p>{JSON.stringify(params)}</p>
+    <p>{params}</p>
   <p>{JSON.stringify(profile)}</p>
   </div>;
 }
