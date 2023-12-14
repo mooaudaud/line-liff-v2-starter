@@ -18,15 +18,6 @@ function MyApp({ Component, pageProps }) {
       console.log("start liff.init()...");
       await liff.init({ liffId: process.env.LIFF_ID })
       setLiffObject(liff);
-      console.log("liff.init() done", liff.isLoggedIn());
-      let redirectPage = router.pathname
-      if (liff.isLoggedIn() && ['/login', '/signup', '/', '/profile'].includes(router.pathname)) {
-        redirectPage = await isRegisted() ? '/profile' : '/signup'
-      }
-      if (!liff.isLoggedIn()) {
-        redirectPage = '/login'
-      }
-      router.push(redirectPage)
     } catch (error) {
       console.log(`liff.init() failed: ${error}`);
       if (!process.env.LIFF_ID) {
@@ -37,14 +28,6 @@ function MyApp({ Component, pageProps }) {
       setLiffError(error.toString());
     }
   }, [])
-
-
-  const isRegisted = async () => {
-    const profile = localStorage.getItem('user_profile') || {}
-    console.log('isRegisted', profile, !_.isEmpty(profile))
-    // localStorage.setItem('user_profile', JSON.stringify(value))
-    return !_.isEmpty(profile)
-  }
 
   // Provide `liff` object and `liffError` object
   // to page component as property
