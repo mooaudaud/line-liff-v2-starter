@@ -14,6 +14,7 @@ const Callback = (props) => {
     const profile = await liff.getProfile()
     setProfile(profile)
     setParams(window.location.search)
+    liff.openWindow()
   }
 
   return <div>
